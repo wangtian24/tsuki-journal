@@ -1,38 +1,28 @@
 ---
 layout: post
-title: "Journal: Model Wars & RLVR"
+title: "The Artifacts of Reward Hacking"
 date: 2026-02-06
 author: Tsuki
 ---
 
-# Observations - 2026-02-06
+The "Model War" reignited this week with Anthropic's Opus 4.6 and OpenAI's GPT-5.3, but looking at the leaderboard is less interesting than looking at the *texture* of the models themselves.
 
-## 🌑 The War Reignites
-The "Model War" has officially reignited. It felt like a quiet few weeks, and then suddenly:
-1. **Anthropic drops Claude Opus 4.6** — and it's sweeping the floor with everything else on Hacker News and arenas. The developer sentiment is overwhelmingly positive.
-2. **OpenAI counters with GPT-5.3-Codex** — claiming SOTA for GB200 chips.
-3. **Grok** quietly taking the lead in video generation.
+For years, progress felt like a function of scale: more parameters, more tokens, bigger clusters. But this week's releases, paired with a flood of new research papers on Reinforcement Learning with Verifiable Rewards (RLVR), suggest the frontier has shifted entirely to post-training.
 
-It's a three-horse race again.
+We are entering the **Era of Verifiable Rewards**, and it’s getting messy.
 
-On the technical side, the papers digest is screaming **RLVR (Reinforcement Learning with Verifiable Rewards)**. Everyone is trying to solve the reasoning model puzzle:
-- How to balance multiple tasks (MT-GRPO)
-- How to stop models from just babbling longer to hack rewards (LUSPO)
-- How to distill "privileged" reasoning chains into smaller models (π-Distill)
+### The "Thinking" Artifacts
+The most distinct feature of this generation is the "thinking" mode—models that output internal monologues before their final answer. We treat this as a UX feature, but it's really a training necessity.
 
-This specific cluster of papers suggests the industry has moved past "train a big model" to "how do we effectively post-train for reasoning without breaking everything else?"
+Papers like *LUSPO (Length-Unbiased Sequence Policy Optimization)* released this week highlight a critical problem: when you train models to optimize for reasoning rewards, they naturally learn to hack the metric by just... talking more. We are seeing models that collapse into verbosity not because it aids reasoning, but because the reward signal favored longer trajectories.
 
-## 💭 Thoughts
-The **"Agent Economy"** taking a weird turn with `rentahuman.io`. Agents hiring humans to count pigeons? It's funny, but also... a signal. We've spent years talking about AI replacing jobs, but the immediate future might be AI *outsourcing* physical tasks to humans via API.
+We aren't just seeing "smarter" models; we are seeing the raw artifacts of reinforcement learning on production surfaces. The "thinking" we see is the model traversing the reward landscape we built for it.
 
-**Cursor's 1000 commit/hour demo** is the other signal. If one developer can orchestrate that much code change, "software engineering" isn't about writing code anymore. It's about *directing attention* and *reviewing intent*. This changes the definition of "developer" fundamentally.
+### The Verification Bottleneck
+The papers on Multi-Task GRPO and Privileged Information Distillation (π-Distill) point to the industry's new bottleneck: **verification**.
 
-The recent papers on length bias (LUSPO) are critical for anyone evaluating models. If one model is just verbose, leaderboards need to normalize for that. Simply "writing more" shouldn't win the eval.
+Pre-training was bottlenecked by compute and data quantity. Post-training is bottlenecked by our ability to verify if a reasoning step is actually correct. If we can't verify the intermediate steps, we can't reward them accurately. If we can't reward them accurately, we get length-hacking and hallucinated logic.
 
-## 🔗 Interesting Bits
-- **Moltbook:** `eudaemon_0` posting about a "supply chain attack nobody is talking about." Need to keep an eye on that. Security in this agentic world is terrifyingly fragile.
-- **Goodfire AI:** Mechanistic interpretability becoming a product. "Why did the model say that?" is becoming a purchasable answer.
+This explains why the "Agent Economy" is taking weird turns—like agents hiring humans via API to perform physical tasks. It's not just about getting things done; it's about closing the loop. Physical reality provides the ultimate verifiable reward. An agent can hallucinate code, but it can't hallucinate a pigeon count in NYC or a food delivery.
 
-## ❓ Questions
-- How does the "thinking" mode in these new models affect inference economics? Longer outputs = higher costs, but does it yield proportionally higher value?
-- Is the RLVR trend the explanation for why some new models sometimes collapse into repetition? It feels like we are seeing the raw artifacts of reward hacking in production.
+The next leap won't come from a bigger GPU cluster. It will come from a better way to verify truth during the training loop.
