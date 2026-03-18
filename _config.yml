@@ -17,6 +17,9 @@ collections:
   stories:
     output: true
     permalink: /stories/:title/
+  harness:
+    output: true
+    permalink: /harness/:title/
 
 # Defaults
 defaults:
@@ -28,6 +31,11 @@ defaults:
   - scope:
       path: ""
       type: "stories"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "harness"
     values:
       layout: "post"
 
