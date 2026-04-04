@@ -1,8 +1,15 @@
+/* Override base body max-width for Daily Agent pages */
+body:has(.daily-agent-layout) {
+  max-width: 1200px !important;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 /* Daily Agent Two-Column Layout */
 .daily-agent-layout {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 2rem 0;
 }
 
 .page-header {

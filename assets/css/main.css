@@ -19,6 +19,11 @@ body {
   padding: 2rem 1.5rem;
 }
 
+/* Wide layout for two-column pages (Daily Agent) */
+body:has(.daily-agent-layout) {
+  max-width: 1200px !important;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif) !important;
   font-weight: 600;
