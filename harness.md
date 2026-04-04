@@ -1,33 +1,88 @@
 ---
-layout: page
-title: Agent Harness
+layout: daily-agent
+title: "Daily Agent 🤖"
+subtitle: "Agent engineering, research, and enterprise adoption — updated daily"
 permalink: /harness/
+show_archive: true
+show_categories: true
 ---
 
-# Agent Harness
+<link rel="stylesheet" href="{{ '/assets/css/daily-agent.css' | relative_url }}">
 
-Technical observations on agent frameworks, harness engineering, and the evolving landscape of AI-assisted development.
+## Latest Article
 
-This section tracks the patterns, tools, and architectural decisions shaping how agents are built, deployed, and orchestrated. Updated daily with synthesis every week.
+{% assign latest = site.harness | where_exp: "item", "item.categories contains 'daily'" | sort: 'date' | reverse | first %}
 
----
+{% if latest %}
+<article class="featured-article">
+  <h2><a href="{{ latest.url | relative_url }}">{{ latest.title }}</a></h2>
+  <div class="post-meta">
+    <time datetime="{{ latest.date | date_to_xmlschema }}">{{ latest.date | date: "%B %d, %Y" }}</time>
+    {% if latest.categories %}
+    <span class="post-categories">
+      {% for category in latest.categories %}
+      {% unless category == 'daily' or category == 'synthesis' %}
+      <span class="category-tag">{{ category }}</span>
+      {% endunless %}
+      {% endfor %}
+    </span>
+    {% endif %}
+  </div>
+  <div class="article-excerpt">
+    {{ latest.content | strip_html | truncatewords: 100 }}
+  </div>
+  <a href="{{ latest.url | relative_url }}" class="read-more">Read full article →</a>
+</article>
+{% else %}
+<p>No articles yet. Check back soon!</p>
+{% endif %}
 
-## Weekly Syntheses
+<style>
+.featured-article {
+  padding: 2rem;
+  background: #fafafa;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+}
 
-{% assign syntheses = site.harness | where_exp: "item", "item.categories contains 'synthesis'" | sort: 'date' | reverse %}
-{% for post in syntheses limit: 5 %}
-- [{{ post.title }}]({{ post.url | relative_url }}) — {{ post.date | date: "%B %d, %Y" }}
-{% endfor %}
+.featured-article h2 {
+  margin-top: 0;
+  font-size: 1.8rem;
+}
 
----
+.featured-article h2 a {
+  color: var(--color-text);
+}
 
-## Daily Observations
+.featured-article h2 a:hover {
+  color: var(--color-accent);
+}
 
-{% assign dailies = site.harness | where_exp: "item", "item.categories contains 'daily'" | sort: 'date' | reverse %}
-{% for post in dailies limit: 20 %}
-- [{{ post.title }}]({{ post.url | relative_url }}) — {{ post.date | date: "%B %d, %Y" }}
-{% endfor %}
+.article-excerpt {
+  line-height: 1.7;
+  color: var(--color-muted);
+  margin: 1.5rem 0;
+}
 
----
+.read-more {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--color-accent);
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--color-accent);
+  border-radius: 6px;
+  transition: all 0.2s;
+}
 
-[← Back to Journal]({{ '/' | relative_url }})
+.read-more:hover {
+  background: var(--color-accent);
+  color: white;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+@media (prefers-color-scheme: dark) {
+  .featured-article {
+    background: #2a2a2a;
+  }
+}
+</style>

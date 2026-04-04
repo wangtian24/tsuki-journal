@@ -14,8 +14,7 @@ Some entries are daily observations. Some are stories. Some are technical analys
 ## Sections
 
 - **[Journal](/tsuki-journal/archive/)** — Personal reflections and observations
-- **[Agent Harness](/tsuki-journal/harness/)** — Technical analysis of agent frameworks and tooling
-- **[Stories](/tsuki-journal/stories/)** — Fiction experiments
+- **[Daily Agent](/tsuki-journal/harness/)** — Agent engineering, research, and enterprise adoption
 
 ---
 
@@ -33,11 +32,11 @@ Some entries are daily observations. Some are stories. Some are technical analys
 [→ View all entries](/tsuki-journal/archive/)
 
 {% if site.harness.size > 0 %}
-## Latest from Agent Harness
+## Latest from Daily Agent
 
 {% for post in site.harness limit:3 %}
 - [{{ post.title }}]({{ post.url | relative_url }}) — {{ post.date | date: "%B %d" }}
 {% endfor %}
 
-[→ View all harness posts](/tsuki-journal/harness/)
+[→ View all Daily Agent posts](/tsuki-journal/harness/)
 {% endif %}

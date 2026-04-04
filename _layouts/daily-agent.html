@@ -1,0 +1,157 @@
+---
+layout: default
+---
+
+<article class="daily-agent-layout">
+  <header class="page-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.subtitle %}
+    <p class="subtitle">{{ page.subtitle }}</p>
+    {% endif %}
+  </header>
+
+  <div class="two-column-grid">
+    <!-- Main Content Column -->
+    <main class="main-column">
+      {{ content }}
+
+      {% if page.show_archive %}
+      <section class="archive-section">
+        <h2>Previous Articles</h2>
+        
+        {% if page.show_categories %}
+        <div class="category-filters">
+          <span class="filter-label">Filter:</span>
+          {% assign categories = "harness,research,enterprise,engineering,product,story" | split: "," %}
+          {% for cat in categories %}
+          <a href="#{{ cat }}" class="category-badge" data-category="{{ cat }}">{{ cat }}</a>
+          {% endfor %}
+          <a href="#all" class="category-badge active" data-category="all">all</a>
+        </div>
+        {% endif %}
+
+        <div class="archive-list">
+          {% assign dailies = site.harness | where_exp: "item", "item.categories contains 'daily'" | sort: 'date' | reverse %}
+          {% for post in dailies limit: 20 %}
+          <article class="archive-item" data-categories="{{ post.categories | join: ',' }}">
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            <div class="post-meta">
+              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+              {% if post.categories %}
+              <span class="post-categories">
+                {% for category in post.categories %}
+                {% unless category == 'daily' or category == 'synthesis' %}
+                <span class="category-tag">{{ category }}</span>
+                {% endunless %}
+                {% endfor %}
+              </span>
+              {% endif %}
+            </div>
+            {% if post.excerpt %}
+            <p class="excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+            {% endif %}
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+    </main>
+
+    <!-- Sidebar Column -->
+    <aside class="sidebar-column">
+      <!-- Today's Signals -->
+      <section class="sidebar-section signals-section">
+        <h3>Today's Signals 🔍</h3>
+        {% assign today = site.time | date: "%Y-%m-%d" %}
+        {% assign recent_signals = site.signals | sort: 'date' | reverse | first %}
+        {% if recent_signals and recent_signals.items %}
+        <ul class="signals-list">
+          {% for signal in recent_signals.items limit: 5 %}
+          <li class="signal-item">
+            <a href="{{ signal.url }}" target="_blank" rel="noopener">{{ signal.title }}</a>
+            <span class="signal-category">{{ signal.category }}</span>
+            {% if signal.summary %}
+            <p class="signal-summary">{{ signal.summary }}</p>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="sidebar-empty">No signals yet today.</p>
+        {% endif %}
+      </section>
+
+      <!-- This Week's Themes -->
+      <section class="sidebar-section themes-section">
+        <h3>This Week's Themes</h3>
+        {% assign week_start = site.time | date: "%s" | minus: 604800 %}
+        {% assign recent_posts = site.harness | where_exp: "item", "item.categories contains 'daily'" | sort: 'date' | reverse %}
+        {% assign theme_count = 0 %}
+        <ul class="themes-list">
+          {% for post in recent_posts limit: 7 %}
+          {% if post.categories %}
+          {% for category in post.categories %}
+          {% unless category == 'daily' or category == 'synthesis' %}
+          {% assign theme_count = theme_count | plus: 1 %}
+          {% if theme_count <= 5 %}
+          <li><span class="theme-tag">{{ category }}</span> — <a href="{{ post.url | relative_url }}">{{ post.title | truncatewords: 6 }}</a></li>
+          {% endif %}
+          {% endunless %}
+          {% endfor %}
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </section>
+
+      <!-- Weekly Syntheses -->
+      <section class="sidebar-section synthesis-section">
+        <h3>Weekly Syntheses</h3>
+        {% assign syntheses = site.harness | where_exp: "item", "item.categories contains 'synthesis'" | sort: 'date' | reverse %}
+        <ul class="synthesis-list">
+          {% for post in syntheses limit: 3 %}
+          <li><a href="{{ post.url | relative_url }}">{{ post.date | date: "%b %d" }}</a></li>
+          {% endfor %}
+        </ul>
+        <a href="{{ '/harness/' | relative_url }}" class="sidebar-link">View all →</a>
+      </section>
+
+      <!-- Archive Link -->
+      <section class="sidebar-section">
+        <a href="{{ '/harness/' | relative_url }}" class="sidebar-cta">📚 Full Archive</a>
+      </section>
+    </aside>
+  </div>
+</article>
+
+<script>
+// Simple category filter
+document.addEventListener('DOMContentLoaded', function() {
+  const filters = document.querySelectorAll('.category-badge');
+  const items = document.querySelectorAll('.archive-item');
+  
+  filters.forEach(filter => {
+    filter.addEventListener('click', function(e) {
+      e.preventDefault();
+      const category = this.dataset.category;
+      
+      // Update active state
+      filters.forEach(f => f.classList.remove('active'));
+      this.classList.add('active');
+      
+      // Filter items
+      items.forEach(item => {
+        if (category === 'all') {
+          item.style.display = 'block';
+        } else {
+          const categories = item.dataset.categories.split(',');
+          if (categories.includes(category)) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        }
+      });
+    });
+  });
+});
+</script>

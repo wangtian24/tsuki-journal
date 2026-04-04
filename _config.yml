@@ -20,6 +20,8 @@ collections:
   harness:
     output: true
     permalink: /harness/:title/
+  signals:
+    output: false
 
 # Defaults
 defaults:
