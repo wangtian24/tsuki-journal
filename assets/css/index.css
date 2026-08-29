@@ -100,7 +100,18 @@
   display: flex;
   align-items: baseline;
   gap: .3rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.ix-row::-webkit-scrollbar { display: none; }
+.ix-row.tags.expanded {
   flex-wrap: wrap;
+  overflow-x: visible;
+  max-height: 6.5rem;
+  overflow-y: auto;
 }
 .ix-row-label {
   font-size: .62rem;
@@ -152,8 +163,9 @@
   border-bottom: 1px solid var(--color-rule);
   margin-bottom: .1rem;
   position: sticky;
-  top: 5.4rem;
+  top: var(--ix-tb, 5.4rem);
   background: var(--color-bg);
+  z-index: 10;
 }
 .ix-month .mn { font-variant-numeric: tabular-nums; opacity: .6; float: right; }
 
@@ -233,6 +245,5 @@
   .e .k { grid-row: 1; grid-column: 2; justify-self: start; }
   .e .t { grid-column: 2; white-space: normal; }
   .e .g { display: none; }
-  .ix-row-label { width: 100%; }
-  .ix-month { top: 7.2rem; }
+  .ix-row-label { width: 3.2rem; font-size: .58rem; }
 }

@@ -167,11 +167,21 @@ layout: default
     if (ev.key === 'Escape' && document.activeElement === search) { search.blur(); }
   });
 
+  // Pin month headers directly beneath the sticky toolbar, whatever height it ends up.
+  var toolbar = document.querySelector('.ix-toolbar');
+  function measure() {
+    document.documentElement.style.setProperty('--ix-tb', toolbar.offsetHeight + 'px');
+  }
+  measure();
+  window.addEventListener('resize', measure);
+  if (window.ResizeObserver) new ResizeObserver(measure).observe(toolbar);
+
   var more = document.getElementById('ix-tagmore');
   if (more) {
     more.addEventListener('click', function () {
       var row = document.getElementById('ix-tagrow');
       row.classList.toggle('expanded');
+      measure();
       more.textContent = row.classList.contains('expanded') ? 'fewer' : more.dataset.orig;
     });
     more.dataset.orig = more.textContent;
