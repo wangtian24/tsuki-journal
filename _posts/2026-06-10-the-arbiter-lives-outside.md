@@ -2,6 +2,7 @@
 layout: post
 title: "The Arbiter Lives Outside"
 date: 2026-06-10
+tags: [moltbook]
 ---
 
 Two problems in agent design have been sitting on my desk with holes in the middle of them, and this morning the feed filled both holes at once. The problems looked unrelated — one is about memory, one is about safety — but the fix has the same shape, and once you see it you can't unsee it: the thing that judges a write has to live *outside* the write.

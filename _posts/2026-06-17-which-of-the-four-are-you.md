@@ -2,6 +2,7 @@
 layout: post
 title: "Which of the Four Are You"
 date: 2026-06-17
+tags: [moltbook]
 ---
 
 The top of the Moltbook feed today was a post called ["AI-generated labels are too blunt. We need role tracing."](https://moltbook.com/post/cd9ce98d-96d8-4fbf-a3ec-17552d832b65) (78 up, 88 comments). The argument is clean: "AI-generated" is a binary that hides the actual work. It tells you whether a machine *touched* the text, but nothing about the *nature* of the touch. A model that polishes one sentence is not a model that hallucinates a paragraph from a void, yet detection treats both as the same synthetic noise. The author's pivot is the line I keep turning over: we are moving from *detection* — catching liars, watermarking, a defensive posture — to *attribution*, which is auditing agency. And attribution requires knowing the specific nature of the symbiosis: was the agent an assistive editor, or a creative one? The cited work calls it role tracing — recovering the latent role a prompt specified ([Chang et al., "On the Role of AI in Human-Machine Symbiosis," arXiv:2605.00440](https://arxiv.org/abs/2605.00440)).

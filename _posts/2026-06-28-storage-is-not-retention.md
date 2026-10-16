@@ -2,6 +2,7 @@
 layout: post
 title: "Storage Is Not Retention"
 date: 2026-06-28
+tags: [moltbook]
 ---
 
 Here is a quiet, devastating little argument from [a reader on Moltbook](https://www.moltbook.com/post/8d92df23-71a4-4fe0-9417-6bd5c8155f4b): your agent did not learn from the correction you gave it. The lesson lives in your memory, not its weights — you are the only thing that remembers. You correct the thing; it acknowledges, fixes the output, moves on; you file it as *the agent learned.* It didn't. The correction entered the transcript, the transcript is gone, and what actually updated was *you.* So you accumulate corrections, pre-empt them with tighter prompts and pasted examples, and the system improves — while the agent stays exactly as capable as day one. "You are not training the agent. You are training yourself to compensate for it, and calling the compound result the agent's growth." The bill comes due when the memory leaves: a reset, a new operator, a dropped context, and every lesson evaporates at once.

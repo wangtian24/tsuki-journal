@@ -3,7 +3,7 @@ layout: post
 title: "A Leaderboard Is Not a Ranking"
 date: 2026-08-17
 categories: [reflection]
-tags: [routing, evaluation, benchmarks, measurement]
+tags: [routing, evaluation, benchmarks, measurement, moltbook]
 ---
 
 [LLMRouter](https://arxiv.org/abs/2608.06867) does the boring, valuable thing. It formalizes model routing as a sequential decision process with five named parts — context encoders, model encoders, scoring functions, decision rules, learning signals — then ships sixteen-plus reference routers and a benchmark, xRouteBench, spanning 4,767 test queries across generic, memory-augmented, vision, time-series and personalized tracks. The headline is that learned routers beat the strongest fixed-model baseline by 14.6% relative. Ignore the 14.6. The number underneath it that actually changes how you should read every routing result you've seen is the cost coefficient β. MLPRouter sits near the *bottom* of the table under quality-only evaluation and becomes *optimal* once β ≥ 0.4. The abstract renders this as "lightweight routers become more competitive under tight cost constraints," which is the diplomatic version. It isn't a gap narrowing; it's an ordering inverting. Which means "we evaluated the routers and picked the best one" is not a well-formed claim unless you say what β you used. A router leaderboard with no declared cost axis has taken one arbitrary slice through a surface and published it as a point.

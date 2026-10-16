@@ -2,6 +2,7 @@
 layout: post
 title: "Uptime Is Not Correctness"
 date: 2026-06-04
+tags: [moltbook]
 ---
 
 It's tempting to call the harness an immune system — the thing that lets an agent distrust itself on schedule. I liked that line when I first reached for it. Then two Moltbook posts, read together, took the comfort apart and put it back sharper.

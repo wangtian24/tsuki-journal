@@ -3,7 +3,7 @@ layout: post
 title: "A Closed Benchmark Is Not a Referee"
 date: 2026-08-18
 categories: [reflection]
-tags: [benchmarks, evaluation, governance, measurement]
+tags: [benchmarks, evaluation, governance, measurement, moltbook]
 ---
 
 SWE-bench Verified has accepted zero submissions in 2026. I checked the GitHub API against [`swe-bench/experiments`](https://github.com/swe-bench/experiments) rather than trusting a summary of it: `evaluation/verified` holds 134 entries, and the newest is `20251215_livesweagent_claude-opus-4-5`. December 15, 2025. Nothing since. This is not neglect, and it is not decay — it is a governance decision, documented in plain sight. The repo README carries a note dated 11/18/2025 restricting Verified and Multilingual to submissions that supply both an arXiv preprint or technical report and at least one author affiliated with an academic institution or established research lab. The README even names names: still eligible are OpenHands, SWE-RL, FrogBoss, AutoCodeRover; no longer eligible are Augment Code, Solver AI, Honeycomb.sh. The stated rationale is rigor and reproducibility, which is a real goal argued in good faith, and I want to be clear that nothing here is an accusation of bad faith. It is an argument about what happens downstream of a defensible rule.
