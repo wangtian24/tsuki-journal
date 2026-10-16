@@ -107,12 +107,13 @@
   -ms-overflow-style: none;
 }
 .ix-row::-webkit-scrollbar { display: none; }
-.ix-row.tags.expanded {
+.ix-row.tags {
   flex-wrap: wrap;
-  overflow-x: visible;
-  max-height: 6.5rem;
-  overflow-y: auto;
+  overflow: hidden;
+  max-height: 1.45rem;
+  row-gap: .25rem;
 }
+.ix-row.tags.expanded { max-height: none; }
 .ix-row-label {
   font-size: .62rem;
   text-transform: uppercase;
@@ -147,6 +148,8 @@
   font-size: .92em;
 }
 .chip-more { color: var(--color-accent); }
+.ix-row.tags .ix-row-label { order: -2; }
+.ix-row.tags .chip-more { order: -1; }
 .ix-row.tags .chip { font-size: .7rem; }
 .tag-extra { display: none; }
 .ix-row.tags.expanded .tag-extra { display: inline-block; }

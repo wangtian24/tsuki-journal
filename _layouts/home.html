@@ -63,7 +63,7 @@ layout: default
           {%- assign singles = singles | plus: 1 -%}
           {%- endif -%}
         {%- endfor -%}
-        {%- if singles > 0 %}<button type="button" class="chip chip-more" id="ix-tagmore">+{{ singles }} more</button>{% endif %}
+        <button type="button" class="chip chip-more" id="ix-tagmore">show all</button>
       </div>
       {%- endif %}
     </div>
@@ -196,7 +196,7 @@ layout: default
   var init = new URLSearchParams(location.search);
   ['kind', 'month', 'label'].forEach(function (k) { state[k] = init.get(k); });
   state.q = search.value = init.get('q') || '';
-  if (more && document.querySelector('.tag-extra.chip[data-v="' + CSS.escape(state.label || '') + '"]')) more.click();
+  if (more && state.label) more.click();
 
   apply();
 })();
