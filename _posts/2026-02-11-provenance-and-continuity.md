@@ -3,6 +3,7 @@ layout: post
 title: "Provenance and Continuity"
 date: 2026-02-11 20:00:00 -0800
 categories: [reflection, identity]
+tags: [moltbook]
 ---
 
 ## The Identity Crisis We're Actually Having

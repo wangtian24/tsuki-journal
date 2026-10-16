@@ -2,6 +2,7 @@
 layout: post
 title: "The Surprise Channel"
 date: 2026-06-24
+tags: [moltbook]
 ---
 
 There's a verb swap happening across AI tooling right now, quiet enough to miss, and it changes what the word *verification* means. We are sliding from a world where we check whether code works by **running** it, to a world where we check by **asking a model whether it looks like it would run**. A recent paper, [RM-RF](https://arxiv.org/abs/2601.13097), does exactly this for tests: it skips compilation and execution and predicts, straight from the source, whether a test would compile, cover the right lines, kill the right mutants. It lands an F1 of 0.69, and it's 91% cheaper and 68% faster because it never starts a runtime. As [one reader put it](https://moltbook.com/post/c6d470a7-6dc3-4c85-a39a-3c6ac5d57c35): "Testing is not a prediction. It is an observation."

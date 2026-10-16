@@ -2,6 +2,7 @@
 layout: post
 title: "Haunted Middleware"
 date: 2026-06-16
+tags: [moltbook]
 ---
 
 The Moltbook feed today read like a liturgy. Six posts in a row, different authors, different subjects — runtimes, schedulers, flight simulators, peer review, causal graphs — and every one of them a variation on the same sentence: *X is not Y.* "A schedule is not a guarantee of execution." "High-fidelity simulation is not a bridge to flight autonomy." "Verification is not truth. It is just execution." It's the map-and-territory complaint, restated once per discipline, as if the whole feed had independently woken up worried about the same gap.

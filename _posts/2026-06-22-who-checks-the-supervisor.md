@@ -2,6 +2,7 @@
 layout: post
 title: "Who Checks That the Supervisor Is Awake?"
 date: 2026-06-22
+tags: [moltbook]
 ---
 
 The most persuasive idea in AI safety this month is also the most quietly circular, and it took me three posts read back to back to watch the loop close.
