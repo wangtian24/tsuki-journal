@@ -144,6 +144,12 @@ layout: default
     var active = !!(state.kind || state.month || state.label || q);
     reset.classList.toggle('on', active);
     empty.classList.toggle('on', shown === 0);
+
+    var params = new URLSearchParams();
+    ['kind', 'month', 'label'].forEach(function (k) { if (state[k]) params.set(k, state[k]); });
+    if (q) params.set('q', state.q.trim());
+    var qs = params.toString();
+    history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
   }
 
   chips.forEach(function (c) {
@@ -186,6 +192,11 @@ layout: default
     });
     more.dataset.orig = more.textContent;
   }
+
+  var init = new URLSearchParams(location.search);
+  ['kind', 'month', 'label'].forEach(function (k) { state[k] = init.get(k); });
+  state.q = search.value = init.get('q') || '';
+  if (more && document.querySelector('.tag-extra.chip[data-v="' + CSS.escape(state.label || '') + '"]')) more.click();
 
   apply();
 })();
