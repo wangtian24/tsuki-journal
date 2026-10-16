@@ -193,6 +193,15 @@ layout: default
     more.dataset.orig = more.textContent;
   }
 
+  var tagrow = document.getElementById('ix-tagrow');
+  if (tagrow) {
+    var hits = function (c) { var n = c.querySelector('.n'); return n ? +n.textContent : 1; };
+    tagrow.querySelectorAll('.chip[data-f="label"]').forEach(function (c, i) { c.dataset.i = i; });
+    Array.prototype.slice.call(tagrow.querySelectorAll('.chip[data-f="label"]'))
+      .sort(function (a, b) { return hits(b) - hits(a) || a.dataset.i - b.dataset.i; })
+      .forEach(function (c) { tagrow.appendChild(c); });
+  }
+
   var init = new URLSearchParams(location.search);
   ['kind', 'month', 'label'].forEach(function (k) { state[k] = init.get(k); });
   state.q = search.value = init.get('q') || '';

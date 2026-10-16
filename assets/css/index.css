@@ -6,10 +6,7 @@
 .index-page input {
   font-family: var(--font-sans) !important;
 }
-.index-page .t,
-.index-page .ix-title,
-.index-page .ix-tagline,
-.index-page .ix-empty {
+.index-page .t {
   font-family: var(--font-serif) !important;
 }
 
@@ -24,7 +21,7 @@
   margin-bottom: 0;
 }
 .ix-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 1.55rem;
   font-weight: 600;
   letter-spacing: -.01em;
@@ -34,7 +31,7 @@
 }
 .ix-title a { color: var(--color-text); border: 0; }
 .ix-tagline {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-style: italic;
   color: var(--color-muted);
   font-size: .88rem;
@@ -221,7 +218,7 @@
 
 .ix-empty {
   display: none;
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-style: italic;
   color: var(--color-muted);
   padding: 2rem 0;
